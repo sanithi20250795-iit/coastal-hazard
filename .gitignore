@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+data/cache/
+data/processed/
+data/forecast_log/*.db

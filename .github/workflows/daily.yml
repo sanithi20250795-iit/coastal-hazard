@@ -1,0 +1,24 @@
+name: daily-forecast-pull
+on:
+  schedule:
+    - cron: "30 0 * * *"      # every day at 00:30 UTC (06:00 in Sri Lanka)
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: python -m src.daily_pull
+      - name: Commit the new forecast file
+        run: |
+          git config user.name "forecast-bot"
+          git config user.email "forecast-bot@users.noreply.github.com"
+          git add data/forecast_log/*.parquet || true
+          git commit -m "Daily forecast pull" || echo "nothing to commit"
+          git push || true
