@@ -7,6 +7,7 @@ from src import matara, openmeteo, tide
 
 TRAIN_PATH = PROC / "train.parquet"
 
+
 # target name -> (measured column, raw model column)
 TARGETS = {"hs": ("obs_hs", "f_hs"), "tm": ("obs_tz", "f_tm"), "wind": ("obs_wind10", "f_wind")}
 
