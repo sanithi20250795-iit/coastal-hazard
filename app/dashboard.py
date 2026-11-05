@@ -10,6 +10,7 @@ import streamlit as st  # noqa: E402
 from config import LEVEL_NAMES, SKILLS  # noqa: E402
 from src import live  # noqa: E402
 
+
 COLORS = {0: "#2e9e5b", 1: "#f0a500", 2: "#d64545"}
 
 st.set_page_config(page_title="Coastal Hazard Forecast", layout="wide")
